@@ -1,0 +1,13 @@
+/* Stable palette layout in narrow WebKit views; preserve browser zoom. */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+.palette-deck .palette-card .card-swatches{display:flex!important;flex-direction:row;align-items:stretch;gap:0;height:10px;min-height:10px;overflow:hidden}
+.palette-deck .palette-card .card-swatches>i{display:block;min-width:0;height:10px;flex-basis:0}
+.palette-deck .palette-card .palette-card-codes{display:flex!important;flex-direction:row;align-items:start;justify-content:space-between;gap:2px;min-height:12px;padding-top:4px}
+.palette-deck .palette-card .palette-card-codes>span{display:block;position:static;transform:none;font:5.5px/1.4 Menlo,Consolas,monospace!important;letter-spacing:0;white-space:nowrap;min-width:0}
+.palette-deck .palette-card .palette-card-top{display:flex!important;flex-direction:row;flex-shrink:0;gap:4px}
+.palette-deck .palette-card .palette-card-top>span{font:7px/1.4 Arial,sans-serif;white-space:nowrap}
+.palette-deck .palette-card .palette-card-top>span:last-child{font-size:6px}
+.palette-deck .palette-card .palette-card-art{flex:1 1 0;aspect-ratio:1;min-height:0;width:100%}
+.palette-deck .palette-card .palette-card-name,.palette-deck .palette-card .palette-card-motif{max-width:100%}
+.atlas-arrow{display:inline-block;width:.95em;height:.95em;flex:none;vertical-align:-.1em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:540px){.palette-deck .palette-card .palette-card-codes>span{font-size:5px!important}.palette-deck .palette-card .palette-card-name{font-size:10px}.palette-deck .palette-card .palette-card-motif{font-size:8px}}

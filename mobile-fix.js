@@ -1,0 +1,6 @@
+'use strict';
+(()=>{
+ const paths={'↗':'M3 13 13 3M4 3h9v9','→':'M2 8h12M9 3l5 5-5 5','↓':'M8 2v12M3 9l5 5 5-5','↑':'M8 14V2M3 7l5-5 5 5','↔':'M2 8h12M5 5 2 8l3 3M11 5l3 3-3 3'};
+ function apply(){const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),nodes=[];while(walker.nextNode()){const n=walker.currentNode;if(/[↗→↓↑↔]/u.test(n.data)&&!n.parentElement.closest('script,style,svg,textarea,input,.knit-title'))nodes.push(n)}for(const n of nodes){const fragment=document.createDocumentFragment();for(const c of n.data){if(!paths[c]){fragment.appendChild(document.createTextNode(c));continue}const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('class','atlas-arrow');svg.setAttribute('viewBox','0 0 16 16');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',paths[c]);svg.appendChild(path);fragment.appendChild(svg)}n.replaceWith(fragment)}}
+ let pending=false;const observer=new MutationObserver(()=>{if(pending)return;pending=true;queueMicrotask(()=>{pending=false;observer.disconnect();apply();observer.observe(document.body,{childList:true,subtree:true})})});apply();observer.observe(document.body,{childList:true,subtree:true});
+})();
